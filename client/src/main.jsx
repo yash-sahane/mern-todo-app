@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import AuthContextProvider from './AuthContext';
 import App from './App'
 
-export const server = 'https://node-todoapp-y4t1.onrender.com'
+export const server = 'https://node-todo-app-sz7n.onrender.com'
 // export const server = 'http://localhost:5000'
 
 
