@@ -9,7 +9,6 @@ export const newTask = async (req, res, next) => {
     const task = await Task.create({ title, desc, user: req.user });
 
     // success
-    // return next(new ErrorHandler('Task created successfully', 201, true));
     return res.status(200).json({
         success: true,
         message: 'Task created successfully',
