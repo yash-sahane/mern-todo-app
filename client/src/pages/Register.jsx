@@ -15,7 +15,7 @@ const Register = () => {
         try {
             setLoading(true);
             e.preventDefault();
-            console.log(name, email, pass);
+            // console.log(name, email, pass);
             const { data } = await axios.post(`${server}/users/register/`, {
                 name, email, pass
             }, {
@@ -31,7 +31,7 @@ const Register = () => {
             setLoading(false);
         } catch (e) {
             toast.error(e.response.data.message);
-            console.log(e.response.data.message);
+            // console.log(e.response.data.message);
         }
     }
 

@@ -12,7 +12,7 @@ const Header = () => {
     const logoutHandler = async () => {
         setLoading(true);
         const token = localStorage.getItem('token');
-        console.log(token);
+        // console.log(token);
         try {
             const { data } = await axios.get(`${server}/users/logout`, {
                 maxBodyLength: Infinity,
@@ -20,7 +20,7 @@ const Header = () => {
                     'token': token,
                 },
             });
-            console.log(data);
+            // console.log(data);
             toast.success(data.message);
             localStorage.setItem('token', '');
             setIsAuthenticated(false);
@@ -46,8 +46,6 @@ const Header = () => {
                     isAuthenticated ? <button className='btn' onClick={logoutHandler}>Logout</button> : <Link to='/login'>Login</Link>
                 }
             </article>
-            { /* Render Navigate component when isAuthenticated is false */}
-            {/* {!isAuthenticated && <Navigate to='/login' />} */}
         </nav>
     )
 }

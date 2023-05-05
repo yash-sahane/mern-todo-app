@@ -28,14 +28,14 @@ const Home = () => {
                     'Access-Control-Allow-Origin': '*'
                 },
             })
-            console.log(data);
+            // console.log(data);
             toast.success(data.data.message);
             setTasks(prevTasks => [...prevTasks, data.data.task]);
             setLoading(false);
             setTitle('');
             setDesc('');
         } catch (e) {
-            console.log(e.response);
+            // console.log(e.response);
             toast.error(e.response.data.message);
             if (e.response.status === 401) {
                 setLoginLink(true);
@@ -46,6 +46,7 @@ const Home = () => {
     useEffect(() => {
         if (isAuthenticated) {
             const fetchTasks = async () => {
+                setLoading(true);
                 const token = localStorage.getItem('token');
                 const data = await axios.get(`${server}/tasks/my`, {
                     maxBodyLength: Infinity,
@@ -55,10 +56,12 @@ const Home = () => {
                 })
                 console.log(data.data.tasks);
                 setTasks(data.data.tasks);
+                setLoading(false);
             }
             fetchTasks();
         }
     }, [isAuthenticated]);
+
     return (
         <div className="todo-container">
             {!isAuthenticated && <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>Please login for using this app</h4>}

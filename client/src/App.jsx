@@ -26,7 +26,7 @@ const App = () => {
             'Access-Control-Allow-Origin': '*'
           }
         })
-        console.log(data);
+        // console.log(data);
         setUser(data.data.user);
         setIsAuthenticated(true);
         setLoading(false);
@@ -37,7 +37,7 @@ const App = () => {
     }
 
     fetchUser();
-  }, [isAuthenticated])
+  }, [])
 
   return (
     <Router>

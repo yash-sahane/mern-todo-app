@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { toast } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { server } from '../main';
 import axios from 'axios';
 import { AuthContext } from '../AuthContext';
@@ -10,7 +10,6 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const { isAuthenticated, setIsAuthenticated, setLoading } = useContext(AuthContext)
-    const navigate = useNavigate();
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -25,7 +24,7 @@ const Login = () => {
                 },
                 withCredentials: true  // Add this line to include credentials
             });
-            console.log('message : ' + data.message + 'token : ' + data.token);
+            // console.log('message : ' + data.message + 'token : ' + data.token);
             localStorage.setItem("token", data.token);
             toast.success(data.message);
             setIsAuthenticated(true);

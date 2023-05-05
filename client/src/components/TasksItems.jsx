@@ -6,8 +6,7 @@ const TasksItems = ({ tasks }) => {
         <div className="todosContainer">
             {tasks.map((task, i) => {
                 return < Task title={task.title} desc={task.desc} isCompleted={task.isCompleted} id={task._id} key={i} />
-            })
-            }
+            })}
         </div>
     )
 }
