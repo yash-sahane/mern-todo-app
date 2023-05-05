@@ -17,27 +17,28 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem('token');
-      try {
-        setLoading(true);
-        const data = await axios.get(`${server}/users/me/`, {
-          maxBodyLength: Infinity,
-          headers: {
-            'token': token,
-            'Access-Control-Allow-Origin': '*'
-          }
-        })
-        // console.log(data);
-        setUser(data.data.user);
-        setIsAuthenticated(true);
-        setLoading(false);
-      } catch (e) {
-        setUser({});
-        setLoading(false);
+      if (isAuthenticated && token) {
+        try {
+          setLoading(true);
+          const data = await axios.get(`${server}/users/me/`, {
+            maxBodyLength: Infinity,
+            headers: {
+              'token': token,
+              'Access-Control-Allow-Origin': '*'
+            }
+          })
+          setUser(data.data.user);
+          setIsAuthenticated(true);
+          setLoading(false);
+        } catch (e) {
+          setUser({});
+          setLoading(false);
+        }
       }
     }
 
     fetchUser();
-  }, [])
+  }, [isAuthenticated])
 
   return (
     <Router>

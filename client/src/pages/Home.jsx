@@ -54,7 +54,6 @@ const Home = () => {
                         'token': token
                     }
                 })
-                console.log(data.data.tasks);
                 setTasks(data.data.tasks);
                 setLoading(false);
             }

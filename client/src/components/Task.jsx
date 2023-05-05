@@ -15,7 +15,7 @@ const Task = ({ title, desc, isCompleted, id }) => {
                     'token': token
                 }
             })
-            console.log(data);
+            // console.log(data);
             // Fetch the updated tasks data from the server
             const updatedTasks = await axios.get(`${server}/tasks/my`, {
                 headers: {
@@ -26,7 +26,7 @@ const Task = ({ title, desc, isCompleted, id }) => {
             setTasks(updatedTasks.data.tasks);
             toast.success(data.message)
         } catch (e) {
-            console.log(e.response.data.message);
+            // console.log(e.response.data.message);
             toast.error(e.response.data.message);
         }
     }
@@ -51,7 +51,7 @@ const Task = ({ title, desc, isCompleted, id }) => {
             toast.success(data.message)
         } catch (e) {
             // console.log(e);
-            console.log(e.response.data.message);
+            // console.log(e.response.data.message);
             toast.error(e.response.data.message);
         }
     }

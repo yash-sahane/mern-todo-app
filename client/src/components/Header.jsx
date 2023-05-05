@@ -6,7 +6,7 @@ import { AuthContext } from '../AuthContext'
 import { server } from '../main';
 
 const Header = () => {
-    const { isAuthenticated, setIsAuthenticated, setLoading, setTasks } = useContext(AuthContext);
+    const { isAuthenticated, setIsAuthenticated, setLoading, setTasks, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const logoutHandler = async () => {
@@ -25,10 +25,11 @@ const Header = () => {
             localStorage.setItem('token', '');
             setIsAuthenticated(false);
             setTasks([]);
+            setUser(null);
             setLoading(false);
             navigate('/login');
         } catch (e) {
-            console.log(e.response.data.message);
+            // console.log(e.response.data.message);
             toast.error(e.message.data.message);
             setIsAuthenticated(true);
         }

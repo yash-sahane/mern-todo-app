@@ -31,7 +31,7 @@ const Login = () => {
             setLoading(false);
         } catch (e) {
             toast.error(e.response.data.message);
-            console.log(e.response.data.message);
+            // console.log(e.response.data.message);
         }
     }
 
