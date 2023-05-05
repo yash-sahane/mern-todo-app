@@ -23,6 +23,7 @@ const App = () => {
           maxBodyLength: Infinity,
           headers: {
             'token': token,
+            'Access-Control-Allow-Origin': '*'
           }
         })
         console.log(data);

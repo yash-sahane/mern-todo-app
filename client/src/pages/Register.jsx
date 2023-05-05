@@ -20,7 +20,8 @@ const Register = () => {
                 name, email, pass
             }, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
                 },
                 withCredentials: true  // Add this line to include credentials
             });
